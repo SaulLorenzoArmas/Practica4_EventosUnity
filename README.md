@@ -2,7 +2,7 @@
 
 ## Ejercicio1
 
-![alt text](/Practica4_EventosUnity/Imagenes/Ejercicio1_Eventos.gif)
+![alt text](/Imagenes/Ejercicio1_Eventos.gif)
 
 ## Ejercicio2
 
