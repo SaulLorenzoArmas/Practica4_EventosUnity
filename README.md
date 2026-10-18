@@ -67,7 +67,7 @@ Para modificar la masa se usa `GetComponent<Rigidbody>().mass` y para modificar 
 
 ## Ejercicio8
 
-Este ejercicio usa la técnica de recoger escudos y se usa en un pequeño laberinto donde el jugador debe recogerlos para conseguir puntos.
+Este ejercicio usa la técnica de recoger escudos en un pequeño laberinto donde el jugador debe recogerlos para conseguir puntos para aumentar de tamaño.
 
 
 ![alt text](/Imagenes/Ejercicio8_Eventos.gif)
