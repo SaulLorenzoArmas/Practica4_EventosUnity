@@ -1,6 +1,6 @@
 # Practica4_EventosUnity
 
-En esta práctica se usan los eventos en Unity para comunicar objetos. En diferentes escenas, que puede apreciar cómo un objeto puede notificar a otros, mediante `delegate` y `event`. Además, se usan mecanismos de movimiento, colisiones, recogida de objetos y el uso del Canvas.
+En esta práctica se usan los eventos en Unity para comunicar objetos. En diferentes escenas, se puede apreciar cómo un objeto puede notificar a otros, mediante `delegate` y `event`. Además, se usan mecanismos de movimiento, colisiones, recogida de objetos y el uso del Canvas.
 
 ## Ejercicio1
 
@@ -16,7 +16,7 @@ El `Vector3.MoveTowards` es necesario, ya que el `Rigidbody.MovePosition` necesi
 
 En este ejercicio se sustituyen las figuras geométricas de la escena anterior por modelos humanoides, manteniendo la misma mecánica.
 
-Para simplificarlo, los personajes humanoides son hijos de un objeto simple; es decir, en el caso de las esferas, el personaje es hijo de la esfera y se oculta a esta para que solo se vea el personaje.
+Para simplificarlo, los personajes son hijos de un objeto simple; es decir, en el caso de las esferas, el personaje es hijo de la esfera y se oculta a esta última para que solo se vea el personaje.
 
 ![alt text](/Imagenes/Ejercicio2_Eventos.gif)
 
@@ -24,7 +24,7 @@ Para simplificarlo, los personajes humanoides son hijos de un objeto simple; es 
 
 En este ejercicio se utilizan los humanoides de tipo 1 y tipo 2, junto con escudos de ambos tipos. Dependiendo del tipo de personaje con el que colisiona el cubo, cada grupo recibe un evento distinto y se dirige al escudo correspondiente; al alcanzarlo, el escudo cambia de color.
 
-El notificador utiliza dos eventos diferentes y comprueba la etiqueta del objeto que entra en contacto para decidir cuál debe lanzar.
+El notificador utiliza dos eventos diferentes y comprueba la etiqueta del objeto con el que se encuentra para decidir cuál debe lanzar.
 
 El grupo 2 busca todos los escudos con `FindGameObjectsWithTag` y selecciona uno al azar con `Random.Range`. Además, `GetComponentsInChildren<Renderer>()` permite cambiar el color de todos los renders del escudo, de modo que se vea cómo cambia de color al llegar el personaje.
 
@@ -41,25 +41,25 @@ Para orientar a los humanoides del grupo 2, primero se calcula la dirección hac
 
 ## Ejercicio5
 
-En este ejercicio, el jugador recoge escudos mediante triggers y obtiene puntos diferentes según el tipo de escudo. Al recoger uno, se actualiza la puntuación y el escudo deja de mostrarse.
+En este ejercicio, el jugador recoge escudos. Para esto, se usan los eventos de trigger y se obtienen puntos diferentes según el tipo de escudo. Al recoger uno, se actualiza la puntuación y el escudo deja de mostrarse.
 
-La puntuación se guarda en el componente compartido `Datos_personaje`, de modo que los distintos escudos pueden modificar los mismos datos del jugador. 
+La puntuación se guarda en la componente  `Datos_personaje`, de modo que los distintos escudos pueden modificar los datos del jugador. 
 
-Para conseguir que los escudos dejen de mostrarse, se desactivan los renders y el  componente `Collider`: así el escudo desaparece  y deja de colisionar. Otra opción sería desactivar el objeto completo, usando `gameObject.SetActive(false)`.
+Para conseguir que los escudos dejen de mostrarse, se desactivan los renders y el componente `Collider`: así el escudo desaparece y deja de colisionar. Otra opción sería desactivar el objeto completo, usando `gameObject.SetActive(false)`.
 
 ![alt text](/Imagenes/Ejercicio5_Eventos.gif)
 
 ## Ejercicio6
 
-Ahora, la puntuación al recoger escudos se muestra en un Canvas. Cada vez que cambia el marcador, el texto de la UI se actualiza.
+Ahora, la puntuación al recoger escudos se muestra en un Canvas. Cada vez que cambia la cantidad de puntos, el texto de la UI se actualiza.
 
-Para hacerlo se usa un elemento Canvas. Este tiene un campo de texto que se actualiza cada vez que cambia la puntuación. Incluyendo en el script la librería `using TMPro y creando un objeto de tipo TextMeshProUGUI`.
+Para hacerlo se usa un elemento Canvas. Este tiene un campo de texto que se actualiza cada vez que cambia la puntuación. Para hacerlo, se incluye en el script la librería `using TMPro` y creando un objeto de tipo `TextMeshProUGUI`.
 
 ![alt text](/Imagenes/Ejercicio6_Eventos.gif)
 
 ## Ejercicio7
 
-Cada 100 puntos el jugador recibe una recompensa; en este caso, aumenta la masa de su `Rigidbody` y también su tamaño, mostrándose también en un campo de texto del canvas. Para hacerlo más fácil, ahora los escudos dan 50 puntos los del tipo 2 y 25 los del tipo 1.
+Cada 100 puntos el jugador recibe una recompensa; en este caso, aumenta la masa de su `Rigidbody` y también su tamaño, mostrándose también en un campo de texto del canvas. Para hacerlo más fácil, ahora los escudos del tipo 2 dan 50 puntos y los del tipo 1 dan 25 puntos.
 
 Para modificar la masa se usa `GetComponent<Rigidbody>().mass` y para modificar el tamaño se usa `transform.localScale`, aumentando la escala con la que se dibuja. 
 
@@ -68,7 +68,6 @@ Para modificar la masa se usa `GetComponent<Rigidbody>().mass` y para modificar 
 ## Ejercicio8
 
 Este ejercicio usa la técnica de recoger escudos en un pequeño laberinto donde el jugador debe recogerlos para conseguir puntos para aumentar de tamaño.
-
 
 ![alt text](/Imagenes/Ejercicio8_Eventos.gif)
 
